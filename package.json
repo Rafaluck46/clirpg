@@ -5,13 +5,15 @@
   "main": "src/server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server":"node src/server/server.js"
+    "server": "node ./src/server/server.js",
+    "client": "node ./src/client/client.js"
   },
   "author": "Rafael Lucas de Campos, Pedro Bruini",
   "license": "ISC",
   "dependencies": {
     "chalk": "^3.0.0",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "uuid": "^7.0.2"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
