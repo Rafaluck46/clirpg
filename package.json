@@ -4,7 +4,8 @@
   "description": "A rpg for fun with friends",
   "main": "src/server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server":"node src/server/server.js"
   },
   "author": "Rafael Lucas de Campos, Pedro Bruini",
   "license": "ISC",
