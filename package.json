@@ -2,10 +2,17 @@
   "name": "clirpg",
   "version": "1.0.0",
   "description": "A rpg for fun with friends",
-  "main": "src/server.js",
+  "main": "src/server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rafael Lucas de Campos, Pedro Bruini",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
 }
