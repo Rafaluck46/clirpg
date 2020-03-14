@@ -1,4 +1,11 @@
 const Boss = require('./../../entities/boss');
+const bossesList = require('./../../bosslist/bosses');
+
+test('created boss expect random name of list of bosses', () => {
+    const players = 1;
+    let boss = new Boss(players);
+    expect(bossesList).toContain(boss.name);
+});
 
 test('created boss expect max life based on number of players', () => {
     const players = 5;

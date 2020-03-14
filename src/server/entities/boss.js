@@ -8,7 +8,7 @@ const bosses = require('./../bosslist/bosses');
 
 class Boss {
     constructor(currentPlayers){
-        this.name = Math.floor(Math.random() * bosses.length) + 1;
+        this.name = bosses[Math.floor(Math.random() * bosses.length) + 1];
         this.maxLife = 1000 * currentPlayers;
         this.life = this.maxLife;
         this.attack = 150;
