@@ -1,37 +1,35 @@
-require('dotenv').config();
 
-const net = require('net');
-const uuidv4 = require('uuid/v4');
-const socket = new net.Socket();
+const dungeonCli = require('./components/title');
+const connection = require('./connection/connection');
 const readline = require('readline');
-const { SERVER_IP, PORT } = process.env;
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
 
-const headers = {
-    'uuid': uuidv4()
-};
+let run = async () => {
 
-let client = socket.connect(PORT, SERVER_IP, function () {
-    const objHandShake = {
-        headers,
-        'body': null
-    }
-    client.write(JSON.stringify(objHandShake));
-    console.log('Connected HandShake');
-});
+    await dungeonCli.initializeDungeonCli();
+    let client = await connection.initializeConnection();
 
-rl.addListener("line", (input) => {
-    client.write(input);
-    console.log(input.toLocaleString());
-});
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
 
-client.on('data', function (data) {
-    console.log(data.toLocaleString());
-});
+    rl.addListener("line", (input) => {
+        let headers = connection.headers;
+        const objHandShake = {
+            headers, body: {
+                message: input
+            }
+        }
+        client.write(objHandShake);
+    });
 
-client.on('close', function () {
-    console.log('Connection closed');
-});
+    client.on('data', function (data) {
+        console.log(data.toLocaleString());
+    });
+
+    client.on('close', function () {
+        console.log('Connection closed');
+    });
+}
+
+run();
