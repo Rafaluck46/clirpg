@@ -4,7 +4,8 @@ const readline = require('readline');
 let bossName = ['Radamantis'];
 
 let line = readline.createInterface({
-    input: process.stdin
+    input: process.stdin,
+    output: process.stdout
 });
 
 let clients = [];
@@ -14,6 +15,7 @@ let server = net.createServer((socket) => {
         let request = JSON.parse(chunk.toString('utf-8'));
         let clientsocket = clients.find(x => x === request.headers.uuid);
         if (!clientsocket) clients.push({ uuid: request.headers.uuid, socket: socket });
+        console.log(`client connected: ${ request.headers.uuid }`);
     });
 });
 

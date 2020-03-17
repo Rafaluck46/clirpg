@@ -20,7 +20,7 @@ let run = async () => {
                 message: input
             }
         }
-        client.write(objHandShake);
+        client.write(JSON.stringify(objHandShake));
     });
 
     client.on('data', function (data) {
